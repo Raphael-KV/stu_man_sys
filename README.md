@@ -8,7 +8,7 @@ The frontend is fully functional using React `useState` and `localStorage` to si
 ### Planned Backend Database (PostgreSQL)
 **Table:** `students`
 * `id` (Primary Key, UUID)
-* `admission_no` (VARCHAR, UNIQUE, e.g., 'STU-2026-XXXX')
+* `admission_no` (VARCHAR, UNIQUE, e.g., 'STU-XXXX')
 * `name`, `course`, `email` (VARCHAR)
 * `created_at` (TIMESTAMP)
 

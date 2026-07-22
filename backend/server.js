@@ -31,6 +31,11 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+// Health check route
+app.get('/', (req, res) => {
+  res.send('Student Management System API is running smoothly.');
+});
+
 // Test Route to make sure it works
 app.get('/api/test', async (req, res) => {
     try {

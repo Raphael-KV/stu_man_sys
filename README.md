@@ -1,26 +1,58 @@
-# Student Management System (Frontend Mockup)
+# Student Management System
 
-## How to Run Locally
+A full-stack student management application built for a technical assessment. It includes a React frontend, an Express API, and a PostgreSQL database.
 
-1. Clone this repository to your local machine.
-2. Open your terminal in the project directory.
-3. Run `npm install` to install all necessary dependencies.
-4. Run `npm run dev` to start the local development server.
-5. Open the provided `localhost` link in your web browser.
+## Live Links
+* **Live Site:** https://raphael-submission.netlify.app/
+* **API URL:** https://stu-man-sys-backend.onrender.com/
 
-## Project Status & Architecture Plan
-Given the time constraint, I prioritized building a functional frontend mockup to demonstrate state management, responsive UI, and logic skills.
+**Note for Reviewers:** The backend API is hosted on Render's free tier. Because it goes to sleep after 15 minutes of inactivity, the very first time you load the page it might take 30-50 seconds to fetch the data while the server wakes up. After that, it's instant.
 
-The frontend is fully functional using React `useState` and `localStorage` to simulate database persistence, CRUD operations, and auto-generating unique Admission Numbers.
+## Tech Stack
+* **Frontend:** React (Vite), Axios, plain CSS
+* **Backend:** Node.js, Express, Multer (for image uploads)
+* **Database:** PostgreSQL (via Supabase)
+* **Hosting:** Netlify & Render
 
-### Planned Backend Database (PostgreSQL)
-**Table:** `students`
-* `id` (Primary Key, UUID)
-* `admission_no` (VARCHAR, UNIQUE, e.g., 'STU-XXXX')
-* `name`, `course`, `email` (VARCHAR)
+## Database Schema
+`students` table:
+* `id` (SERIAL PRIMARY KEY)
+* `admission_number` (VARCHAR, UNIQUE, auto-generated)
+* `name`, `course`, `email`, `mobile_number`, `gender`, `address` (VARCHAR/TEXT)
+* `year` (INT)
+* `dob` (DATE)
+* `photo_url` (VARCHAR)
 * `created_at` (TIMESTAMP)
 
-### Planned API Endpoints (Node.js/Express)
-* `POST /students` - Creates a new student and generates `admission_no`
-* `GET /students` - Fetches all students for the table view
-* `DELETE /students/:id` - Drops a student based on their unique ID
+## API Endpoints
+* `GET /api/students` - Get all students
+* `POST /api/students` - Add a new student (handles image upload & auto-generates admission number)
+* `DELETE /api/students/:id` - Delete a student
+
+## Local Setup
+
+**1. Clone the repo**
+```bash
+git clone https://github.com/Raphael-KV/stu_man_sys.git
+cd stu-man-sys
+```
+
+**2. Start the backend**
+```bash
+cd backend
+npm install
+```
+*Create a `.env` file in the `backend` folder and add your own Supabase connection string:*
+`DATABASE_URL=your_own_postgres_uri_here`
+```bash
+node server.js
+```
+
+
+**3. Start the frontend**
+Open a new terminal window:
+(inside project root)
+```bash
+npm install
+npm run dev
+```
